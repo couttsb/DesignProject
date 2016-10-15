@@ -1,0 +1,41 @@
+namespace ca.mcgill.ecse321.FTMS;
+ 
+ class Equipment {
+    String name;
+    Integer quantity;
+  }
+
+class Supply {
+  String name;
+  Integer quantity;
+}
+  
+class Staff {
+  Role role;
+  Boolean[] availability;
+}
+
+top Role {
+enum Role {
+  CASHIER = 0, COOK = 1;
+ }
+}
+
+class MenuItem {
+  String name;
+  Supply[] ingredients;
+  Integer popularity;
+  Double price;
+  * -> * Supply;
+}
+
+class Order {
+  autounique id;
+  1 -> * MenuItem;
+}
+
+class FTMS {
+  1 -> * Equipment;
+  1 -> * Order;
+  1 -> * Staff;
+}
