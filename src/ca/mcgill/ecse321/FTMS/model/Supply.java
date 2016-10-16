@@ -3,8 +3,8 @@
 
 package ca.mcgill.ecse321.FTMS.model;
 
-// line 40 "../../../../../../../ump/161015272632/model.ump"
-// line 77 "../../../../../../../ump/161015272632/model.ump"
+// line 42 "../../../../../../../../ump/161015272632/model.ump"
+// line 79 "../../../../../../../../ump/161015272632/model.ump"
 public class Supply
 {
 

@@ -4,8 +4,8 @@
 package ca.mcgill.ecse321.FTMS.model;
 import java.util.*;
 
-// line 34 "../../../../../../../ump/161015272632/model.ump"
-// line 82 "../../../../../../../ump/161015272632/model.ump"
+// line 36 "../../../../../../../../ump/161015272632/model.ump"
+// line 84 "../../../../../../../../ump/161015272632/model.ump"
 public class MenuItem
 {
 
