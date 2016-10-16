@@ -1,31 +1,24 @@
 namespace ca.mcgill.ecse321.FTMS.model;
 
-top Role {
-enum Role {
-  CASHIER = 0, COOK = 1;
- }
-}
-
 class ScheduleManager {
+  singleton;
   1 -> * Equipment;
   1 -> * Schedule;
   1 -> * Staff;
 }
 class Staff {
-  Role role;
-  Boolean[] availability;
+  String role;
+  * -> 1 Schedule;
 }
 class Schedule{
   Date sunday;
-  * -> * Staff;
-  * -> * Equipment;
 }
 class Equipment {
   String name;
   Integer quantity;
 }
 
-class Menu{
+class Menu {
   1 -> * MenuItem;
   1 -> * Supply;
   1 -> * Order;

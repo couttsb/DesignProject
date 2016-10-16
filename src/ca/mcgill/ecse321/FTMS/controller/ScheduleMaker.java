@@ -1,18 +1,19 @@
 package ca.mcgill.ecse321.FTMS.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import ca.mcgill.ecse321.FTMS.model.Schedule;
 import ca.mcgill.ecse321.FTMS.model.ScheduleManager;
 import ca.mcgill.ecse321.FTMS.model.Staff;
-import ca.mcgill.ecse321.FTMS.model.Schedule;
 
 //We return the schedule for that week (whether it be blank or full)
 //If it's blank we leave that to the user to fill in
 
 public class ScheduleMaker {
 	public static List<Staff> whosOnShift(Schedule s){
-		return s.getStaffs();
+		return new ArrayList<Staff>();
 		//We should get a method of determining who's working what day
 	}
 	
