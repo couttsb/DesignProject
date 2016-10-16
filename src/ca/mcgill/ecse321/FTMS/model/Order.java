@@ -4,8 +4,8 @@
 package ca.mcgill.ecse321.FTMS.model;
 import java.util.*;
 
-// line 44 "../../../../../../../ump/161015272632/model.ump"
-// line 88 "../../../../../../../ump/161015272632/model.ump"
+// line 46 "../../../../../../../../ump/161015272632/model.ump"
+// line 90 "../../../../../../../../ump/161015272632/model.ump"
 public class Order
 {
 

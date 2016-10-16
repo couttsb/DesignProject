@@ -4,10 +4,16 @@
 package ca.mcgill.ecse321.FTMS.model;
 import java.util.*;
 
-// line 29 "../../../../../../../ump/161015272632/model.ump"
-// line 94 "../../../../../../../ump/161015272632/model.ump"
+// line 30 "../../../../../../../../ump/161015272632/model.ump"
+// line 96 "../../../../../../../../ump/161015272632/model.ump"
 public class Menu
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static Menu theInstance = null;
 
   //------------------------
   // MEMBER VARIABLES
@@ -22,11 +28,20 @@ public class Menu
   // CONSTRUCTOR
   //------------------------
 
-  public Menu()
+  private Menu()
   {
     item = new ArrayList<MenuItem>();
     supplies = new ArrayList<Supply>();
     orders = new ArrayList<Order>();
+  }
+
+  public static Menu getInstance()
+  {
+    if(theInstance == null)
+    {
+      theInstance = new Menu();
+    }
+    return theInstance;
   }
 
   //------------------------

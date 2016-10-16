@@ -4,10 +4,16 @@
 package ca.mcgill.ecse321.FTMS.model;
 import java.util.*;
 
-// line 10 "../../../../../../../ump/161015272632/model.ump"
-// line 59 "../../../../../../../ump/161015272632/model.ump"
+// line 10 "../../../../../../../../ump/161015272632/model.ump"
+// line 61 "../../../../../../../../ump/161015272632/model.ump"
 public class ScheduleManager
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static ScheduleManager theInstance = null;
 
   //------------------------
   // MEMBER VARIABLES
@@ -22,11 +28,20 @@ public class ScheduleManager
   // CONSTRUCTOR
   //------------------------
 
-  public ScheduleManager()
+  private ScheduleManager()
   {
     equipment = new ArrayList<Equipment>();
     schedules = new ArrayList<Schedule>();
     staffs = new ArrayList<Staff>();
+  }
+
+  public static ScheduleManager getInstance()
+  {
+    if(theInstance == null)
+    {
+      theInstance = new ScheduleManager();
+    }
+    return theInstance;
   }
 
   //------------------------

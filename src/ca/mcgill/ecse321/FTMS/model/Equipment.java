@@ -3,8 +3,8 @@
 
 package ca.mcgill.ecse321.FTMS.model;
 
-// line 24 "../../../../../../../ump/161015272632/model.ump"
-// line 102 "../../../../../../../ump/161015272632/model.ump"
+// line 25 "../../../../../../../../ump/161015272632/model.ump"
+// line 104 "../../../../../../../../ump/161015272632/model.ump"
 public class Equipment
 {
 

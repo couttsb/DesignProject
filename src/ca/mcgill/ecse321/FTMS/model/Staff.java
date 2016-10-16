@@ -4,18 +4,8 @@
 package ca.mcgill.ecse321.FTMS.model;
 import java.util.*;
 
-// line 15 "../../../../../../../ump/161015272632/model.ump"
-// line 65 "../../../../../../../ump/161015272632/model.ump"
-class Role{
-	public Role(int i){
-		this.role = i;
-	}
-	
-	int role;
-	public static final int CASHIER = 0;
-	public static final int COOK = 1;
-}
-
+// line 16 "../../../../../../../../ump/161015272632/model.ump"
+// line 67 "../../../../../../../../ump/161015272632/model.ump"
 public class Staff
 {
 
@@ -98,7 +88,7 @@ public class Staff
     return index;
   }
 
-  public List<Boolean> isAvailability()
+  public boolean isAvailability()
   {
     return availability;
   }

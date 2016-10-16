@@ -5,8 +5,8 @@ package ca.mcgill.ecse321.FTMS.model;
 import java.sql.Date;
 import java.util.*;
 
-// line 19 "../../../../../../../ump/161015272632/model.ump"
-// line 70 "../../../../../../../ump/161015272632/model.ump"
+// line 20 "../../../../../../../../ump/161015272632/model.ump"
+// line 72 "../../../../../../../../ump/161015272632/model.ump"
 public class Schedule
 {
 
