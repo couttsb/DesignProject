@@ -1,19 +1,4 @@
 namespace ca.mcgill.ecse321.FTMS;
- 
- class Equipment {
-    String name;
-    Integer quantity;
-  }
-
-class Supply {
-  String name;
-  Integer quantity;
-}
-  
-class Staff {
-  Role role;
-  Boolean[] availability;
-}
 
 top Role {
 enum Role {
@@ -21,21 +6,41 @@ enum Role {
  }
 }
 
+class ScheduleManager {
+  1 -> * Equipment;
+  1 -> * Schedule;
+  1 -> * Staff;
+}
+class Staff {
+  Role role;
+  Boolean[] availability;
+}
+class Schedule{
+  Date sunday;
+  * -> * Staff;
+  * -> * Equipment;
+}
+class Equipment {
+  String name;
+  Integer quantity;
+}
+
+class Menu{
+  1 -> * MenuItem;
+  1 -> * Supply;
+  1 -> * Order;
+}
 class MenuItem {
   String name;
-  Supply[] ingredients;
   Integer popularity;
   Double price;
   * -> * Supply;
 }
-
+class Supply {
+  String name;
+  Integer quantity;
+}
 class Order {
   autounique id;
   1 -> * MenuItem;
-}
-
-class FTMS {
-  1 -> * Equipment;
-  1 -> * Order;
-  1 -> * Staff;
 }
