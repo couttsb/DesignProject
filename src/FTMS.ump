@@ -1,4 +1,4 @@
-namespace ca.mcgill.ecse321.FTMS;
+namespace ca.mcgill.ecse321.FTMS.model;
 
 top Role {
 enum Role {
