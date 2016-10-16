@@ -1,5 +1,5 @@
 bin/
-src/ca/mcgill/ecse321/FTMS/model/*
+src/ca/mcgill/ecse321/FTMS/model/
 
 *.class
 
