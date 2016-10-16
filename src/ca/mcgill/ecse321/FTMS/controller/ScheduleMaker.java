@@ -17,7 +17,7 @@ public class ScheduleMaker {
 	}
 	
 	//Finds the current week, moves forward/backwards n weeks
-	public Schedule goForwardNWeeks(Schedule s, int weeksForward){
+	public static Schedule goForwardNWeeks(Schedule s, int weeksForward){
 		ScheduleManager sm = ScheduleManager.getInstance();
 		List<Schedule> scheds = sm.getSchedules();
 		for(int i=0; i<scheds.size(); i++){
@@ -58,5 +58,10 @@ public class ScheduleMaker {
 		}
 		
 		return null; //No record found
+	}
+
+	public static void addEmployeeToSchedule(Staff person, Schedule schedule){
+		schedule.addStaff(person);
+		//We need some way to organize who works when
 	}
 }
