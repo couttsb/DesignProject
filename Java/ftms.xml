@@ -4,7 +4,7 @@
     <menuItems id="4">
       <MenuItem id="5">
         <name>Burger</name>
-        <popularity>14</popularity>
+        <popularity>15</popularity>
         <price>5.99</price>
         <ingredients id="6">
           <Supply id="7">
@@ -21,7 +21,7 @@
       </MenuItem>
       <MenuItem id="10">
         <name>Poutine</name>
-        <popularity>29</popularity>
+        <popularity>30</popularity>
         <price>4.99</price>
         <ingredients id="11"/>
       </MenuItem>
@@ -37,7 +37,7 @@
   <supplies id="15">
     <Supply id="16">
       <name>Meat</name>
-      <quantity>99</quantity>
+      <quantity>98</quantity>
     </Supply>
   </supplies>
 </FTMSManager>
