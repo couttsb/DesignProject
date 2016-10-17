@@ -3,8 +3,8 @@ namespace ca.mcgill.ecse321.FTMS.model;
 class FTMSManager {
   singleton;
   1 -> * Equipment;
-  1 -> * Schedule;
-  1 -> * Staff;
+  * -> 1 Menu menu;	
+  1 -> * Staff staff;
   * -> * Supply;
 }
 class Staff {
@@ -21,8 +21,6 @@ class Equipment {
 
 class Menu {
   1 -> * MenuItem;
-  1 -> * Supply;
-  1 -> * Order;
 }
 class MenuItem {
   String name;
