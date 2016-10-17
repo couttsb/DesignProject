@@ -30,8 +30,8 @@ public class PersistenceXStream {
 		try {
 			FileReader reader = new FileReader(filename);
 			return xstream.fromXML(reader);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			//e.printStackTrace();
 			return null;
 		}
 	}

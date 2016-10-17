@@ -6,16 +6,19 @@ import ca.mcgill.ecse321.FTMS.model.Equipment;
 import ca.mcgill.ecse321.FTMS.model.FTMSManager;
 import ca.mcgill.ecse321.FTMS.model.Menu;
 import ca.mcgill.ecse321.FTMS.model.MenuItem;
-import ca.mcgill.ecse321.FTMS.model.Schedule;
+import ca.mcgill.ecse321.FTMS.model.Staff;
+import ca.mcgill.ecse321.FTMS.model.Supply;
 
 public class PersistenceFTMS {
 
 	private static void initializeXStream() {
 		PersistenceXStream.setFilename("ftms.xml");
-		PersistenceXStream.setAlias("equipment", Equipment.class);
-		PersistenceXStream.setAlias("menu", Menu.class);
-		PersistenceXStream.setAlias("menuitem", MenuItem.class);
-		PersistenceXStream.setAlias("schedulemanager", Schedule.class);
+		PersistenceXStream.setAlias("FTMSManager", FTMSManager.class);
+		PersistenceXStream.setAlias("Equipment", Equipment.class);
+		PersistenceXStream.setAlias("Menu", Menu.class);
+		PersistenceXStream.setAlias("Staff", Staff.class);
+		PersistenceXStream.setAlias("Supply", Supply.class);
+		PersistenceXStream.setAlias("MenuItem", MenuItem.class);
 	}
 	
 	/**
@@ -31,15 +34,19 @@ public class PersistenceFTMS {
 		if (ftms2 != null) {
 			// unfortunately, this creates a second RegistrationManager object, even though it is a singleton
 			// copy loaded model into singleton instance of RegistrationManager, because this will be used throughout the application
-			Iterator<Model1> xIt = ftms2.getModel1s().iterator();
-			while (pIt.hasNext())
-				rm.addParticipant(pIt.next());
-			Iterator<Model2> yIt = ftms2.getEvents().iterator();
+			ftms.setMenu(ftms2.getMenu());
+						
+			Iterator<Equipment> eIt = ftms2.getEquipment().iterator();
 			while (eIt.hasNext())
-				rm.addEvent(eIt.next());
-			Iterator<Model3> zIt = ftms2.getRegistrations().iterator();
-			while (rIt.hasNext())
-				rm.addRegistration(rIt.next());
+				ftms.addEquipment(eIt.next());
+			
+			Iterator<Staff> sIt = ftms2.getStaff().iterator();
+			while (sIt.hasNext())
+				ftms.addStaff(sIt.next());
+			
+			Iterator<Supply> supIt = ftms2.getSupplies().iterator();
+			while (supIt.hasNext())
+				ftms.addSupply(supIt.next());
 		}
 	}
 }
