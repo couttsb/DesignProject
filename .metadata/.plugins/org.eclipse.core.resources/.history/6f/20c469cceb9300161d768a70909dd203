@@ -1,0 +1,95 @@
+<?php
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Controller\InputValidator.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Persistence\PersistenceFTMS.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Equipment.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Menu.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\MenuItem.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Order.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Schedule.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\ScheduleManager.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Staff.php';
+require_once 'C:\Users\Brent\ECSE321-DesignProject\FTMS-PHP\Model\Supply.php';
+
+class Controller {
+	private $filename;
+	public function __construct($filename = 'data.txt') {
+		chmod('data.txt', 0644);
+		$this->filename = $filename;
+	}
+	
+	public function createSchedule($schedule_name) {
+		// 1. Validate input 
+		$name = InputValidator::validate_input($schedule_name);
+			if ($name == null || strlen($name) == 0) {
+				throw new Exception("Schedule name cannot be empty!");
+			} else {
+				// 2. Load all of the data 
+				$pm = new PersistenceFTMS();
+				$m = $pm->loadDataFromStore();
+				
+				// 3. Add the new schedule
+				$schedule = new Schedule($name);
+				$m->addSchedule($schedule);
+				
+				// 4. Write all of the data 
+				$m->writeDatatoStore($m);
+			}
+	}
+	
+	public function createEquipment($equipment_name, $equipment_quantity) {
+		// 1. Validate input
+		$name = InputValidator::validate_input($equipment_name, $equipment_quantity);
+		$error = "";
+			if ($name == null || strlen($name) == 0) {
+				$error .= "@1Equipment name and/or number cannot be empty! ";
+			} if ($equipment_quantity % 1 != 0) {
+				$error .= "@2Equipment quantity must be an integer! ";
+			} if (trim($error) > 0) {
+				throw new Exception(trim($error));
+			} else {
+				// 2. Load all of the data including equipment name and number. 
+				$pm = new PersistenceFTMS();
+				$m = $pm->loadDataFromStore();
+				
+				$aName = NULL;
+				foreach ($rm->getEquipment() as $equipment) {
+					if (strcmp($equipment->getName(), $aName) == 0) {
+						$aName = $equipment;
+						break;
+					}
+				}
+				
+				$aQuantity = NULL;
+				foreach ($rm->getEquipment() as $equipment) {
+					if (strcmp($equipment->getQuantity(), $aQuantity) == 0) {
+						$aQuantity = $equipment;
+						break;
+					}
+				}
+				
+				// 3. Add the new equipment
+				$aEquipment = new Equipment($aName, $aQuantity);
+				$rm->addEquipment($aEquipment);
+				
+				// 4. Write all of the data
+				$pm->writeDataToStore($m);
+			}
+	}
+	
+	public function createStaff($staff_name) {
+		
+	}
+	
+	public function createSupply ($supply_name) {
+		
+	}
+	
+	public function createMenuItem ($menuitem_name) {
+		
+	}
+	
+	public function createOrder ($order_name) {
+		
+	}
+}
+?>
