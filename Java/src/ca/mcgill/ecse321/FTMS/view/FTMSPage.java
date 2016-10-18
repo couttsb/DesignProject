@@ -120,7 +120,6 @@ public class FTMSPage {
 		// error
 		errorLabel.setText(error);
 		if (error == null || error.length() == 0) {
-			// participant list
 			menuItems = new ArrayList<MenuItem>();
 			menuList.removeAll();
 			Iterator<MenuItem> mIt = ftms.getMenu().getMenuItems().iterator();
