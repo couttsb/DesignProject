@@ -7,17 +7,11 @@ class Menu
 {
 
 	//------------------------
-	// STATIC VARIABLES
-	//------------------------
-
-	private static $theInstance = null;
-
-	//------------------------
 	// MEMBER VARIABLES
 	//------------------------
 
 	//Menu Associations
-	private $item;
+	private $menuItems;
 	private $supplies;
 	private $orders;
 
@@ -25,57 +19,48 @@ class Menu
 	// CONSTRUCTOR
 	//------------------------
 
-	private function __construct()
+	public function __construct()
 	{
-		$this->item = array();
+		$this->menuItems = array();
 		$this->supplies = array();
 		$this->orders = array();
-	}
-
-	public static function getInstance()
-	{
-		if(self::$theInstance == null)
-		{
-			self::$theInstance = new Menu();
-		}
-		return self::$theInstance;
 	}
 
 	//------------------------
 	// INTERFACE
 	//------------------------
 
-	public function getItem_index($index)
+	public function getMenuItem_index($index)
 	{
-		$aItem = $this->item[$index];
-		return $aItem;
+		$aMenuItem = $this->menuItems[$index];
+		return $aMenuItem;
 	}
 
-	public function getItem()
+	public function getMenuItems()
 	{
-		$newItem = $this->item;
-		return $newItem;
+		$newMenuItems = $this->menuItems;
+		return $newMenuItems;
 	}
 
-	public function numberOfItem()
+	public function numberOfMenuItems()
 	{
-		$number = count($this->item);
+		$number = count($this->menuItems);
 		return $number;
 	}
 
-	public function hasItem()
+	public function hasMenuItems()
 	{
-		$has = $this->numberOfItem() > 0;
+		$has = $this->numberOfMenuItems() > 0;
 		return $has;
 	}
 
-	public function indexOfItem($aItem)
+	public function indexOfMenuItem($aMenuItem)
 	{
 		$wasFound = false;
 		$index = 0;
-		foreach($this->item as $item)
+		foreach($this->menuItems as $menuItem)
 		{
-			if ($item->equals($aItem))
+			if ($menuItem->equals($aMenuItem))
 			{
 				$wasFound = true;
 				break;
@@ -168,60 +153,60 @@ class Menu
 		return $index;
 	}
 
-	public static function minimumNumberOfItem()
+	public static function minimumNumberOfMenuItems()
 	{
 		return 0;
 	}
 
-	public function addItem($aItem)
+	public function addMenuItem($aMenuItem)
 	{
 		$wasAdded = false;
-		if ($this->indexOfItem($aItem) !== -1) { return false; }
-		$this->item[] = $aItem;
+		if ($this->indexOfMenuItem($aMenuItem) !== -1) { return false; }
+		$this->menuItems[] = $aMenuItem;
 		$wasAdded = true;
 		return $wasAdded;
 	}
 
-	public function removeItem($aItem)
+	public function removeMenuItem($aMenuItem)
 	{
 		$wasRemoved = false;
-		if ($this->indexOfItem($aItem) != -1)
+		if ($this->indexOfMenuItem($aMenuItem) != -1)
 		{
-			unset($this->item[$this->indexOfItem($aItem)]);
-			$this->item = array_values($this->item);
+			unset($this->menuItems[$this->indexOfMenuItem($aMenuItem)]);
+			$this->menuItems = array_values($this->menuItems);
 			$wasRemoved = true;
 		}
 		return $wasRemoved;
 	}
 
-	public function addItemAt($aItem, $index)
+	public function addMenuItemAt($aMenuItem, $index)
 	{
 		$wasAdded = false;
-		if($this->addItem($aItem))
+		if($this->addMenuItem($aMenuItem))
 		{
 			if($index < 0 ) { $index = 0; }
-			if($index > $this->numberOfItem()) { $index = $this->numberOfItem() - 1; }
-			array_splice($this->item, $this->indexOfItem($aItem), 1);
-			array_splice($this->item, $index, 0, array($aItem));
+			if($index > $this->numberOfMenuItems()) { $index = $this->numberOfMenuItems() - 1; }
+			array_splice($this->menuItems, $this->indexOfMenuItem($aMenuItem), 1);
+			array_splice($this->menuItems, $index, 0, array($aMenuItem));
 			$wasAdded = true;
 		}
 		return $wasAdded;
 	}
 
-	public function addOrMoveItemAt($aItem, $index)
+	public function addOrMoveMenuItemAt($aMenuItem, $index)
 	{
 		$wasAdded = false;
-		if($this->indexOfItem($aItem) !== -1)
+		if($this->indexOfMenuItem($aMenuItem) !== -1)
 		{
 			if($index < 0 ) { $index = 0; }
-			if($index > $this->numberOfItem()) { $index = $this->numberOfItem() - 1; }
-			array_splice($this->item, $this->indexOfItem($aItem), 1);
-			array_splice($this->item, $index, 0, array($aItem));
+			if($index > $this->numberOfMenuItems()) { $index = $this->numberOfMenuItems() - 1; }
+			array_splice($this->menuItems, $this->indexOfMenuItem($aMenuItem), 1);
+			array_splice($this->menuItems, $index, 0, array($aMenuItem));
 			$wasAdded = true;
 		}
 		else
 		{
-			$wasAdded = $this->addItemAt($aItem, $index);
+			$wasAdded = $this->addMenuItemAt($aMenuItem, $index);
 		}
 		return $wasAdded;
 	}
@@ -349,7 +334,7 @@ class Menu
 
 	public function delete()
 	{
-		$this->item = array();
+		$this->menuItems = array();
 		$this->supplies = array();
 		$this->orders = array();
 	}

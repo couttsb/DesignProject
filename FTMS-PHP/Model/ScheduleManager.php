@@ -7,12 +7,6 @@ class ScheduleManager
 {
 
 	//------------------------
-	// STATIC VARIABLES
-	//------------------------
-
-	private static $theInstance = null;
-
-	//------------------------
 	// MEMBER VARIABLES
 	//------------------------
 
@@ -25,20 +19,11 @@ class ScheduleManager
 	// CONSTRUCTOR
 	//------------------------
 
-	private function __construct()
+	public function __construct()
 	{
 		$this->equipment = array();
 		$this->schedules = array();
 		$this->staffs = array();
-	}
-
-	public static function getInstance()
-	{
-		if(self::$theInstance == null)
-		{
-			self::$theInstance = new ScheduleManager();
-		}
-		return self::$theInstance;
 	}
 
 	//------------------------

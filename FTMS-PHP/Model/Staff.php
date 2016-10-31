@@ -13,15 +13,17 @@ class Staff
 	//Staff Attributes
 	private $role;
 	private $availability;
+	private $name;
 
 	//------------------------
 	// CONSTRUCTOR
 	//------------------------
 
-	public function __construct($aRole)
+	public function __construct($aRole, $aName)
 	{
 		$this->role = $aRole;
 		$this->availability = array();
+		$this->name = $aName;
 	}
 
 	//------------------------
@@ -51,6 +53,14 @@ class Staff
 		$this->availability = array_values($this->availability);
 		$wasRemoved = true;
 		return $wasRemoved;
+	}
+
+	public function setName($aName)
+	{
+		$wasSet = false;
+		$this->name = $aName;
+		$wasSet = true;
+		return $wasSet;
 	}
 
 	public function getRole()
@@ -87,6 +97,11 @@ class Staff
 		$rawAnswer = array_search($aAvailability,$this->availability);
 		$index = $rawAnswer == null && $rawAnswer !== 0 ? -1 : $rawAnswer;
 		return $index;
+	}
+
+	public function getName()
+	{
+		return $this->name;
 	}
 
 	public function isAvailability()
