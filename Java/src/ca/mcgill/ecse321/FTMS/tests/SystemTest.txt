@@ -1,0 +1,16 @@
+System Testing plan
+
+System Testing will occur after each component and integration test is finished and the system is first assembled. After that, everytime a new update/upgrade to a unit goes up though the stack and eventually gets merged into master the system tests will be run again. These tests can be grouped together into deliverables or patches, although this is discouraged due to ease of testability constraints. If you will group updates together, please provide justification for the packaging; be specific.
+
+As the system is developed with quite a few private and overwritten functions it is best to test the system by running it with the Java UI (simply executing the program). By running it as such we can see exactly how the implementation is encumbant upon the system as a whole. Since security is not a vital parameter, this is a valid form of testing. Since the program is also only used by 1 person at a time, load tests are vistigile.
+
+When performing the system test please perform the following actions:
+-Request menu items that don't exist
+-Request menu items that can't be made
+-Request menu items that can be made
+-Access the menu when there is nothing there
+-Access the menu when it is populated
+-Populate the menu
+
+Since this is done mostly via the GUI, it is hard to use a testing platform like JUnit to test the states of the GUI. Especially, with private encapsulation. While it may be a reasonable choice to test each different test in the suite by editing the persistance XML, since verifying the GUI was accurate would be too complex it is considered out of the way. By using this black-box technique, we also allow for a much faster testing cycle.
+
