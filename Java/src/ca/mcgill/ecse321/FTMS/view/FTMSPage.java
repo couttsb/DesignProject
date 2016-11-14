@@ -122,12 +122,16 @@ public class FTMSPage {
 		if (error == null || error.length() == 0) {
 			menuItems = new ArrayList<MenuItem>();
 			menuList.removeAll();
-			Iterator<MenuItem> mIt = ftms.getMenu().getMenuItems().iterator();
-
-			while(mIt.hasNext()) {
-				MenuItem m = mIt.next();
-				menuItems.add(m);
-				menuList.add(m.getName());
+			try{ //Repopulate can fail if the Menu has nothing in it
+				Iterator<MenuItem> mIt = ftms.getMenu().getMenuItems().iterator();
+				while(mIt.hasNext()) {
+					MenuItem m = mIt.next();
+					menuItems.add(m);
+					menuList.add(m.getName());
+				}
+			} catch(NullPointerException e){
+				menuItems.add(new MenuItem("FOOD", 0, 2.00));
+				menuList.add("FOOD");
 			}
 		}
 
