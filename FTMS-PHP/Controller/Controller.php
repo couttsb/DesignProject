@@ -164,7 +164,7 @@ class Controller {
 	}
 	
 	
-	public function createSuppliesToMenuItem ($aItem, $aSupplies) {
+	public function createSuppliesToMenuItem($aItem, $aSupplies) {
 		// 1. Load all of the data 
 		$pm2 = new PersistenceMenuFTMS();
 		$mm = $pm2->loadDataFromStore();

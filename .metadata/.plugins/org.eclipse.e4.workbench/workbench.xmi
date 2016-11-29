@@ -225,7 +225,7 @@
         <tags>EditorStack</tags>
         <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_4jQz8JNEEeaOca4S-AGWQg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="index.php" iconURI="platform:/plugin/org.eclipse.php.ui/icons/full/obj16/phpfile.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.php.editor&quot; name=&quot;index.php&quot; partName=&quot;index.php&quot; title=&quot;index.php&quot; tooltip=&quot;FTMS-PHP/index.php&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FTMS-PHP/index.php&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;295&quot; selectionTopPixel=&quot;102&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.php.editor&quot; name=&quot;index.php&quot; partName=&quot;index.php&quot; title=&quot;index.php&quot; tooltip=&quot;FTMS-PHP/index.php&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/FTMS-PHP/index.php&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;295&quot; selectionTopPixel=&quot;115&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.php.editor</tags>
           <tags>removeOnHide</tags>
@@ -378,7 +378,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_J5J80pMFEeahzLGExKQ4lA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_1SEowKopEeaYUYajixbWQQ" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_Ja4tIZMFEeahzLGExKQ4lA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="__i4ld6-0EeakovZHsSR0Ug" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_Ja4tIZMFEeahzLGExKQ4lA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_J5J805MFEeahzLGExKQ4lA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -417,7 +417,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_J5MZEJMFEeahzLGExKQ4lA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_1SJhQ6opEeaYUYajixbWQQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Ja4sz5MFEeahzLGExKQ4lA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="__jJrNq-0EeakovZHsSR0Ug" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Ja4sz5MFEeahzLGExKQ4lA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_J5MZEZMFEeahzLGExKQ4lA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
