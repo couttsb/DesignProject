@@ -2,7 +2,9 @@
 require_once 'C:\xampp\htdocs\FTMS-PHP\Persistence\PersistenceScheduleManagerFTMS.php';
 require_once 'C:\xampp\htdocs\FTMS-PHP\Persistence\PersistenceMenuFTMS.php';
 require_once 'C:\xampp\htdocs\FTMS-PHP\Model\ScheduleManager.php';
+require_once 'C:\xampp\htdocs\FTMS-PHP\Model\Menu.php';
 require_once 'C:\xampp\htdocs\FTMS-PHP\Model\Equipment.php';
+require_once 'C:\xampp\htdocs\FTMS-PHP\Model\MenuItem.php';
 
 class PersistenceFTMSTest extends PHPUnit_Framework_TestCase {
 	protected $pm;
@@ -18,8 +20,8 @@ class PersistenceFTMSTest extends PHPUnit_Framework_TestCase {
 	
 	public function testPersistenceMenu() {
 		// 1. Create test data
-		$sm = ScheduleManager::getInstance();
-		$equipment = new Equipment("Fire");
+		$sm = new ScheduleManager();
+		$equipment = new Equipment("Fire", "9");
 		$sm->addEquipment($equipment);
 	
 		// 2. Write all of the data
@@ -41,8 +43,8 @@ class PersistenceFTMSTest extends PHPUnit_Framework_TestCase {
 	
 	public function testPersistenceScheduleManager() {
 		// 1. Create test data
-		$mm = Menu::getInstance();
-		$menuitem = new MenuItem("Food");
+		$mm = new Menu();
+		$menuitem = new MenuItem("Food", "0", "9.99");
 		$mm->addMenuItem($menuitem);
 	
 		// 2. Write all of the data

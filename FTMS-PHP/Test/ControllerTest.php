@@ -53,7 +53,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(1, count($this->sm->getEquipment()));
 		$this->assertEquals($equipment, $this->sm->getEquipment_index(0)->getName());
-		$this->assertEquals(0, count($this->sm->getStaff()));		
+		$this->assertEquals(0, count($this->sm->getStaffs()));		
 	}
 	
 	
@@ -75,7 +75,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
@@ -96,7 +96,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
@@ -118,12 +118,12 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
 	public function testCreateStaff() {
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 		
 		$role = "Cook";
 		$name = "George";
@@ -137,14 +137,14 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(1, count($this->sm->getStaff()));
+		$this->assertEquals(1, count($this->sm->getStaffs()));
 		$this->assertEquals($role, $this->sm->getStaff_index(0)->getRole());
 		$this->assertEquals($name, $this->sm->getStaff_index(0)->getName());
 	}
 	
 	
 	public function testCreateStaffNull() {
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	
 		$role = null;
 		$name = null;
@@ -160,12 +160,12 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
 	public function testCreateStaffEmpty() {
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	
 		$role = "";
 		$name = "";
@@ -181,12 +181,12 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
 	public function testCreateStaffSpaces() {
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	 
 		$role = " ";
 		$name = " ";
@@ -202,12 +202,12 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		// Check file contents are proper
 		$this->sm = $this->pm->loadDataFromStore();
 		$this->assertEquals(0, count($this->sm->getEquipment()));
-		$this->assertEquals(0, count($this->sm->getStaff()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
 	}
 	
 	
 	public function testCreateSupply() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 		
 		$name = "Cheese";
 		$quantity = "12";
@@ -220,16 +220,16 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getSupply()));
+		$this->assertEquals(1, count($this->mm->getSupplies()));
 		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
 		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateSupplyNull() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 		
 		$name = null;
 		$quantity = null;
@@ -244,16 +244,14 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Supply name cannot be empty! @2Supply quantity cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getSupply()));
-		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
-		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateSupplyEmpty() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 	
 		$name = "";
 		$quantity = "";
@@ -268,16 +266,14 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Supply name cannot be empty! @2Supply quantity cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getSupply()));
-		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
-		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateSupplySpaces() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 	
 		$name = " ";
 		$quantity = " ";
@@ -292,40 +288,38 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Supply name cannot be empty! @2Supply quantity cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getSupply()));
-		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
-		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateItem() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 		
 		$name = "Poutine";
 		$popularity = "99";
 		$price = "5.99";
 		
 		try {
-			$this->c->createItem($name, $popularity, $quantity);
+			$this->c->createItem($name, $popularity, $price);
 		} catch (Exception $e) {
 			$this->fail();
 		}
 		
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($name, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$this->assertEquals($name, $this->mm->getMenuItem_index(0)->getName());
+		$this->assertEquals($popularity, $this->mm->getMenuItem_index(0)->getPopularity());
+		$this->assertEquals($price, $this->mm->getMenuItem_index(0)->getPrice());
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
-	
+		
 	
 	public function testCreateItemNull() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 	
 		$name = null;
 		$popularity = null;
@@ -341,17 +335,14 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Menu item name cannot be empty! @2Menu item price cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($name, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateItemEmpty() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 	
 		$name = "";
 		$popularity = "";
@@ -367,17 +358,14 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Menu item name cannot be empty! @2Menu item price cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($name, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testCreateItemSpaces() {
-		$this->assertEquals(0, count($this->mm->getSupply()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
 	
 		$name = " ";
 		$popularity = " ";
@@ -393,138 +381,83 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@1Menu item name cannot be empty! @2Menu item price cannot be empty!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($name, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
-	public function testCreateSuppliesToMenuItem() {
-		$this->assertEquals(0, count($this->mm->getMenuItem()));
-	
+	public function testOrder() {
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
+		
 		$item = "Poutine";
-		$popularity = null;
-		$price = "12.99";
+		
+		$name = "Poutine";
+		$popularity = "99";
+		$price = "5.99";
+		
 		try {
 			$this->c->createItem($name, $popularity, $price);
 		} catch (Exception $e) {
 			$this->fail();
 		}
-	
-		$name = "Fries";
-		$quantity = "1";
-		$name2 = "Cheese Curds";
-		$quantity2 = "2";
 		
-		$supplies[0][0] = $name;
-		$supplies[0][1] = $quantity;
-		$supplies[1][0] = $name2;
-		$supplies[1][1] = $quantity2;
+		$name2 = "Fries";
+		$quantity2 = "52";
 		
-		try {
-			$this->c->createSupply($name, $quantity);
-			$this->c->createSupply($name2, $quantity2);
-		} catch (Exception $e) {
-			$this->fail();
-		}
+		$name3 = "Cheese Curds";
+		$quantity3 = "30";
 		
-		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals(2, count($this->mm->getSupply()));
+		$name4 = "Gravy";
+		$quantity4 = "5";
 		
 		try {
-			$this->c->createSuppliesToMenuItem($item, $supplies);
-		} catch (Exception $e) {
-			$this->fail();
-		}
-	
-		// Check file contents are proper
-		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($item, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
-		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals($name2, $this->mm->getSupply_index(1)->getName());
-		$this->assertEquals($quantity2, $this->mm->getSupply_index(1)->getQuantity());
-		$this->assertEquals($supplies, $this->mm->getItem_index(0)->getSupplies());
-		$this->assertEquals(0, count($this->mm->getOrder()));
-	}
-	
-	
-	public function testCreateOrder() {
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getStaff()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
-		
-		$item = "Poutine";
-		$popularity = null;
-		$price = "12.99";
-		
-		try { 
-			$this->c->createItem($name, $popularity, $price);
-		} catch (Exception $e) {
-			$this->fail();
-		}
-		
-		$name = "Fries";
-		$quantity = "52";
-		
-		$name2 = "Cheese Curds";
-		$quantity2 = "30";
-		
-		$name3 = "Gravy";
-		$quantity3 = "5";
-		
-		try {
-			$this->c->createSupply($name, $quantity);
 			$this->c->createSupply($name2, $quantity2);
 			$this->c->createSupply($name3, $quantity3);
+			$this->c->createSupply($name4, $quantity4);
 		} catch (Exception $e) {
 			$this->fail();
 		}
 		
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals(3, count($this->mm->getSupply()));
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$this->assertEquals(3, count($this->mm->getSupplies()));
 		
 		try {
-			$this->c->order($item);
+			$this->c->createOrder($item);
 		} catch (Exception $e) {
 			$this->fail();
 		}
 		
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($item, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(3, count($this->mm->getSupply()));
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$this->assertEquals($item, $this->mm->getMenuItem_index(0)->getName());
+		$this->assertEquals($popularity, $this->mm->getMenuItem_index(0)->getPopularity());
+		$this->assertEquals($price, $this->mm->getMenuItem_index(0)->getPrice());
+		$this->assertEquals(3, count($this->mm->getSupplies()));
 		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
 		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
 		$this->assertEquals($name2, $this->mm->getSupply_index(1)->getName());
 		$this->assertEquals($quantity2, $this->mm->getSupply_index(1)->getQuantity());
 		$this->assertEquals($name3, $this->mm->getSupply_index(2)->getName());
 		$this->assertEquals($quantity3, $this->mm->getSupply_index(2)->getQuantity());
-		$this->assertEquals(1, count($this->mm->getOrder()));
-		$this->assertEquals($this->mm->getItem_index(0), $this->mm->getOrder_index(0)->getItem());
-		$this->assertEquals($this->mm->getSupply_index(0), $this->mm->getOrder_index(0)->getSupply());
-		$this->assertEquals($this->mm->getSupply_index(1), $this->mm->getOrder_index(1)->getSupply());
-		$this->assertEquals($this->mm->getSupply_index(2), $this->mm->getOrder_index(2)->getSupply());
+		$this->assertEquals(1, count($this->mm->getOrders()));
+		$this->assertEquals($this->mm->getMenuItem_index(0), $this->mm->getOrder_index(0)->getMenuItems());
+		$this->assertEquals($this->mm->getSupply_index(0), $this->mm->getOrder_index(0)->getSupplies());
+		$this->assertEquals($this->mm->getSupply_index(1), $this->mm->getOrder_index(1)->getSupplies());
+		$this->assertEquals($this->mm->getSupply_index(2), $this->mm->getOrder_index(2)->getSupplies());
 	}
 	
 	
 	public function testOrderNull() {
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getStaff()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 		
 		$item = null;
 		
@@ -534,21 +467,21 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 			$error = $e->getMessage();
 		}
 		
-		$this->assertEquals("@1Order item cannot be empty!", $error);
+		$this->assertEquals("@1Order item cannot be empty! ", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(0, count($this->mm->getItem()));
-    	$this->assertEquals(0, count($this->mm->getSupply()));
-    	$this->assertEquals(0, count($this->mm->getStaff()));
-    	$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+    	$this->assertEquals(0, count($this->mm->getSupplies()));
+    	$this->assertEquals(0, count($this->sm->getStaffs()));
+    	$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testOrderItemDoesNotExist() {
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getStaff()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 		
 		$item = "Pizza";
 		
@@ -559,8 +492,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		}
 		
 		$this->mm = $this->mm->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$item = $this->mm->getItem_index(0);
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$item = $this->mm->getMenuItem_index(0);
 		$this->mm->delete();
 		$this->pm2->writeDataToStore($this->mm);
 		
@@ -571,18 +504,18 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		}
 		
 		// Check the proper error messages are thrown 
-		$this->assertEquals("@1Order item cannot be empty!");
+		$this->assertEquals("@1Order item cannot be empty! ");
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(0, count($this->mm->getItem()));
-		$this->assertEquals(0, count($this->mm->getSupply()));
-		$this->assertEquals(0, count($this->mm->getStaff()));
-		$this->assertEquals(0, count($this->mm->getOrder()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
+		$this->assertEquals(0, count($this->mm->getSupplies()));
+		$this->assertEquals(0, count($this->sm->getStaffs()));
+		$this->assertEquals(0, count($this->mm->getOrders()));
 	}
 	
 	
 	public function testOrderInsufficientSupplies() {
-		$this->assertEquals(0, count($this->mm->getMenuItem()));
+		$this->assertEquals(0, count($this->mm->getMenuItems()));
 		
 		$item = "Poutine";
 		$popularity = null;
@@ -604,8 +537,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		}
 		
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals(1, count($this->mm->getSupply()));
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$this->assertEquals(1, count($this->mm->getSupplies()));
 		
 		try {
 			$this->c->order($item);
@@ -617,16 +550,16 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("@2Order item cannot be made due to lack of supplies!", $error);
 		// Check file contents are proper
 		$this->mm = $this->pm2->loadDataFromStore();
-		$this->assertEquals(1, count($this->mm->getItem()));
-		$this->assertEquals($item, $this->mm->getItem_index(0)->getName());
-		$this->assertEquals($popularity, $this->mm->getItem_index(0)->getPopularity());
-		$this->assertEquals($price, $this->mm->getItem_index(0)->getPrice());
-		$this->assertEquals(1, count($this->mm->getSupply()));
+		$this->assertEquals(1, count($this->mm->getMenuItems()));
+		$this->assertEquals($item, $this->mm->getMenuItem_index(0)->getName());
+		$this->assertEquals($popularity, $this->mm->getMenuItem_index(0)->getPopularity());
+		$this->assertEquals($price, $this->mm->getMenuItem_index(0)->getPrice());
+		$this->assertEquals(1, count($this->mm->getSupplies()));
 		$this->assertEquals($name, $this->mm->getSupply_index(0)->getName());
 		$this->assertEquals($quantity, $this->mm->getSupply_index(0)->getQuantity());
-		$this->assertEquals(1, count($this->mm->getOrder()));
-		$this->assertEquals($this->mm->getItem_index(0), $this->mm->getOrder_index(0)->getItem());
-		$this->assertEquals($this->mm->getSupply_index(0), $this->mm->getOrder_index(0)->getSupply());
+		$this->assertEquals(1, count($this->mm->getOrders()));
+		$this->assertEquals($this->mm->getMenuItem_index(0), $this->mm->getOrder_index(0)->getMenuItems());
+		$this->assertEquals($this->mm->getSupply_index(0), $this->mm->getOrder_index(0)->getSupplies());
 	}
 }
 ?>

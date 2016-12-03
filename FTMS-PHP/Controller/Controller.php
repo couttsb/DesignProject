@@ -147,7 +147,8 @@ class Controller {
 		}
 	
 		// 3. Add the new staff
-		if ($myrole != null && $myname != null) {
+//////////////////////////////////////////CHANGED if() statement!!! ///////////////////////////////////////
+		if ($myrole != null && $myname != null && trim($myrole) != "" && trim($myname) != "") {
 			$mystaff = new Staff($myrole, $myname);
 			$sm->addStaff($mystaff);
 	
@@ -155,20 +156,21 @@ class Controller {
 			$pm->writeDataToStore($sm);
 		} else {
 			$error = "";
+/////////////////////////changed from trim($myname) == 0 to strlen($myname) == "" //////////////////////////
 			if ($myrole == null || trim($myrole) == "") {
 				$error .= "@1Staff role cannot be empty! ";
-			} if ($myname == null || strlen($myname) == 0) {
+			} if ($myname == null || trim($myname) == "") {
 				$error .= "@2Staff name cannot be empty!";
 			} throw new Exception(trim($error));
 		}
 	}
 	
 	
-	public function createSuppliesToMenuItem($aItem, $aSupplies) {
-		// 1. Load all of the data 
+	public function createSuppliesToMenuItem ($aItem, $aSupplies) {
+		// 1. Load all of the data
 		$pm2 = new PersistenceMenuFTMS();
 		$mm = $pm2->loadDataFromStore();
-		
+	
 		// 2. Find the menu item name and supplies
 		$myitem = NULL;
 		foreach ($mm->getMenuItems() as $MenuItem) {
@@ -184,7 +186,7 @@ class Controller {
 				break;
 			}
 		}
-		
+	
 		// 3. Add the supplies to the corresponding menu item
 		$error = "";
 		if ($myitem != NULL && $mysupplies != NULL) {
@@ -195,31 +197,27 @@ class Controller {
 	}
 	
 	
-	public function createOrder ($aName) {		
+	public function createOrder ($aName) {
 		// 1. Load all of the data
 		$pm2 = new PersistenceMenuFTMS();
 		$mm = $pm2->loadDataFromStore();
-		
-		// 2. Find the menu item names, popularities, and supplies 
-		$mymenu = NULL;
-		foreach ($mm->getMenuItems() as $menuitem) {
-			$mymenu = $menuitem;
-		}
+	
+		// 2. Find the menu item names, popularities, and supplies
 		$myitem = NULL;
-		foreach ($mymenu->getName() as $item) {
-			if (strcmp($mymenu->getName(), $aName) == 0) {
-				$mymenu = $item;
+		foreach ($mm->getMenuItems() as $menuitem) {
+			$myitem = $menuitem;
+		}
+		if ($myitem != null) {
+			foreach ( $myitem->getPopularity () as $popularity ) {
+				$mypopularity = $popularity + 1;
+				$myitem->setPopularity ( $mypopularity );
+			}
+			foreach ( $myitem->getSupplies () as $supplies ) {
+				$mysupplies = $supplies;
+				$mymenu->removeSupply ( $supplies );
 			}
 		}
-		foreach ($mymenu->getPopularity() as $popularity) {
-			$mypopularity = $popularity+1;
-			$mymenu->setPopularity($mypopularity);
-		}
-		foreach ($mymenu->getSupplies() as $supplies) {
-			$mysupplies = $supplies;
-			$mymenu->removeSupply($supplies);
-		}
-		
+	
 		// 3. Order the desired menu item
 		$error = "";
 		if ($myitem != NULL && $mypopularity != NULL && $mysupplies != NULL) {
@@ -233,7 +231,7 @@ class Controller {
 			if ($mysupplies == 0) {
 				throw new Exception("@2Order item cannot be made due to lack of supplies!");
 			}
-		}		
+		}
 	}
 }
 ?>
